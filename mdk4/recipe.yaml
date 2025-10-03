@@ -1,0 +1,15 @@
+name: mdk4
+version: '4.2'
+description: tool for attacking and deauthinticate WPA2/WPA3 clients from the network
+source:
+  url: https://github.com/aircrack-ng/mdk4/archive/refs/tags/4.2.tar.gz
+dependencies:
+  build: []
+  runtime: []
+build:
+  out_of_source: true
+  steps:
+  - make -j4
+install:
+  steps:
+  - make install
