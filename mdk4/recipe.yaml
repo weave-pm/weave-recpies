@@ -9,6 +9,7 @@ dependencies:
 build:
   out_of_source: true
   steps:
+  - cd ..
   - make -j4
 install:
   steps:
