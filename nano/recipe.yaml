@@ -11,6 +11,8 @@ build:
   out_of_source: true
   steps:
   - ./configure
-  - make -j4
+  - make
 install:
-  steps: []
+  steps:
+  - make install
+  - install -v -m644 doc/{nano.html,sample.nanorc} /usr/share/doc/nano-8.6
