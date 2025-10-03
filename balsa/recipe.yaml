@@ -1,0 +1,16 @@
+name: balsa
+version: 2.6.5
+description: The Balsa package contains a lightweight GTK+-based mail client. 
+
+source:
+  url: https://gitlab.gnome.org/GNOME/balsa/-/archive/2.6.5/balsa-2.6.5.tar.gz
+
+dependencies:
+  build: []
+  runtime: [enchant, gmime, gpgme, gtk-3, libical, libnotify, libsecret]
+
+build: |
+  out_of_source: true
+  meson setup .. --prefix=/usr --buildtype=release -D html-widget=no
+  ninja
+  ninja install
