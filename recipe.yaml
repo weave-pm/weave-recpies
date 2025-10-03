@@ -1,0 +1,16 @@
+name: whois
+version: 5.6.4
+description: Whois is a client-side application which queries the whois directory service for information pertaining to a particular domain name
+
+source:
+  url: https://github.com/rfc1036/whois/archive/v5.6.4/whois-5.6.4.tar.gz
+  
+dependencies:
+  build: [libidn]
+  runtime: []
+
+build: |
+  make
+  make prefix=/usr install-whois
+  make prefix=/usr install-mkpasswd
+  make prefix=/usr install-pos
