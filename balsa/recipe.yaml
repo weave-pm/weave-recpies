@@ -7,7 +7,14 @@ source:
 
 dependencies:
   build: []
-  runtime: [enchant, gmime, gpgme, gtk-3, libical, libnotify, libsecret]
+  runtime: 
+  - enchant 
+  - gmime 
+  - gpgme 
+  - gtk-3 
+  - libical
+  - libnotify
+  - libsecret
 
 build: |
   out_of_source: true
