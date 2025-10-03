@@ -1,0 +1,18 @@
+name: efibootmgr
+version: 18
+discription: The efibootmgr package provides tools and libraries to manipulate EFI variables. 
+
+source:
+  url: https://github.com/rhboot/efibootmgr/archive/18/efibootmgr-18.tar.gz
+
+dependencies:
+  build:
+  - efivar
+  - popt
+  runtime: []
+
+build: | 
+  make EFIDIR=LFS EFI_LOADER=grubx64.efi
+
+install: |
+  make EFIDIR=LFS install
