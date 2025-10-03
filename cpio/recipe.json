@@ -13,62 +13,42 @@
   "build": {
     "steps": [
       {
-        "command": "sed -e \"/^extern int (\\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/\" \\",
+        "command": "sed -e \"/^extern int (\\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/\" -i src/extern.h",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "-i src/extern.h",
+        "command": "sed -e \"/^int (\\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/\" -i src/global.c",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "sed -e \"/^int (\\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/\" \\",
+        "command": "./configure --prefix=/usr --enable-mt --with-rmt=/usr/libexec/rmt",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "-i src/global.c",
+        "command": "make",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "./configure --prefix=/usr \\",
+        "command": "makeinfo --html -o doc/html doc/cpio.texi",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "--enable-mt   \\",
+        "command": "makeinfo --html --no-split -o doc/cpio.html doc/cpio.texi",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "--with-rmt=/usr/libexec/rmt &&",
+        "command": "makeinfo --plaintext -o doc/cpio.txt doc/cpio.texi",
         "in_source_dir": true,
         "as_root": false
       },
       {
-        "command": "make &&",
-        "in_source_dir": true,
-        "as_root": false
-      },
-      {
-        "command": "makeinfo --html            -o doc/html      doc/cpio.texi &&",
-        "in_source_dir": true,
-        "as_root": false
-      },
-      {
-        "command": "makeinfo --html --no-split -o doc/cpio.html doc/cpio.texi &&",
-        "in_source_dir": true,
-        "as_root": false
-      },
-      {
-        "command": "makeinfo --plaintext       -o doc/cpio.txt  doc/cpio.texi",
-        "in_source_dir": true,
-        "as_root": false
-      },
-      {
-        "command": "make -C doc pdf &&",
+        "command": "make -C doc pdf",
         "in_source_dir": true,
         "as_root": false
       },
