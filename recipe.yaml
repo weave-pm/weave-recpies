@@ -1,0 +1,17 @@
+name: lighttpd
+version: 1.4.82
+description: a fast and lightweight http server
+
+source:
+  url: https://github.com/lighttpd/lighttpd1.4/archive/refs/tags/lighttpd-1.4.82.tar.gz
+  format: tar.gz
+
+dependencies:
+  build: []
+  runtime: []
+
+build: |
+  autoreconf -i
+  ./configure --prefix=/usr --disable-static
+  make 
+  make install
