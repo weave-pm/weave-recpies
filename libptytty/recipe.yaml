@@ -1,18 +1,23 @@
 name: libptytty
 version: 2.0
-description: The libptytty package provides a library that allows for OS independent and secure pty/tty and utmp/wtmp/lastlog handling. 
+description: The libptytty package provides a library that allows for OS independent and secure pty/tty and utmp/wtmp/lastlog handling.
 
 source:
-  url: http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
+  type: url
+  location: http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
+  verification: 36b13a3648b2e1f486b7201c713b63205ed81d6f51c7209353594dce93259869
 
 dependencies:
   build:
-  - cmake
+    - cmake
   runtime: []
 
-build: |
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D PT_UTMP_FILE:STRING=/run/utmp ..
-  make -j4
+build:
+  out_of_source: true
+  steps:
+    - cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPT_UTMP_FILE:STRING=/run/utmp ..
+    - make
 
-install: |
-  make install
+install:
+  steps:
+    - make install
