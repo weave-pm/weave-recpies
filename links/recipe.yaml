@@ -11,5 +11,4 @@ dependencies:
   runtime: []
 
 build: |
-  ./configure --prefix=/usr --mandir=/usr/share/man &&
-make
+  ./configure --prefix=/usr --mandir=/usr/share/man && make
