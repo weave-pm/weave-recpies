@@ -1,0 +1,17 @@
+name: vim
+version: 9.1.1629
+description: The Vim package, which is an abbreviation for VI IMproved, contains a vi clone with extra features as compared to the original vi. 
+
+source:
+  url: https://github.com/vim/vim/archive/v9.1.1629/vim-9.1.1629.tar.gz
+  
+dependencies:
+  build: []
+  runtime: []
+
+build: |
+  echo '#define SYS_VIMRC_FILE  "/etc/vimrc"' >>  src/feature.h
+  echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h
+  ./configure --prefix=/usr --with-features=huge --with-tlib-ncursesw
+  make
+  make install
