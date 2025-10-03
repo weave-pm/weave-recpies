@@ -13,3 +13,4 @@ dependencies:
 build: |
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
+  make install
