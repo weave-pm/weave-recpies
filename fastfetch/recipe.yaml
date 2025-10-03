@@ -11,5 +11,5 @@ dependencies:
 
 build: |
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make -j$(nproc)
+  make 
   make install
