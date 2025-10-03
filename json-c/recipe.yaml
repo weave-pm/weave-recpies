@@ -6,12 +6,11 @@ source:
   url: https://s3.amazonaws.com/json-c_releases/releases/json-c-0.18.tar.gz
 
 dependencies:
+  out_of_source: true
   build: [cmake]
   runtime: []
 
 build: |
-  mkdir build 
-  cd build
   cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE_Release -D BUILD_STATIC_LIBS=OFF ..
   make -j4
   make install
