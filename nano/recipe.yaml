@@ -1,0 +1,16 @@
+name: nano
+version: '8.6'
+description: The Nano package contains a small, simple text editor which aims to replace
+  Pico, the default editor in the Pine package.
+source:
+  url: https://www.nano-editor.org/dist/v8/nano-8.6.tar.xz
+dependencies:
+  build: []
+  runtime: []
+build:
+  out_of_source: true
+  steps:
+  - ./configure
+  - make -j4
+install:
+  steps: []
