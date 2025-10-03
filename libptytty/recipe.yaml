@@ -5,6 +5,8 @@ description: The libptytty package provides a library that allows for OS indepen
 source:
   type: url
   location: http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
+  hash_type: md5
+  verification: 2a7f3f3c0d3ef71902da745dc7959529
 
 dependencies:
   build:
