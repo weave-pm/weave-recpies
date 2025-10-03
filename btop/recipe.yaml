@@ -1,0 +1,16 @@
+name: btop
+version: 1.4.5
+description: a monitor of resources
+source:
+  url: https://github.com/aristocratos/btop/archive/refs/tags/v1.4.5.tar.gz
+dependencies:
+  build: []
+  runtime: []
+build:
+  out_of_source: true
+  steps:
+  - cmake ..
+  - make -j4
+install:
+  steps:
+  - make install
