@@ -1,0 +1,82 @@
+{
+  "name": "cpio",
+  "version": "2.15",
+  "description": "The cpio package contains tools for archiving.",
+  "source": {
+    "url": "https://ftp.gnu.org/gnu/cpio/cpio-2.15.tar.bz2",
+    "format": "tar.bz2"
+  },
+  "dependencies": {
+    "build": [],
+    "runtime": []
+  },
+  "build": {
+    "steps": [
+      {
+        "command": "sed -e \"/^extern int (\\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/\" \\",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "-i src/extern.h",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "sed -e \"/^int (\\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/\" \\",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "-i src/global.c",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "./configure --prefix=/usr \\",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "--enable-mt   \\",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "--with-rmt=/usr/libexec/rmt &&",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "make &&",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "makeinfo --html            -o doc/html      doc/cpio.texi &&",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "makeinfo --html --no-split -o doc/cpio.html doc/cpio.texi &&",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "makeinfo --plaintext       -o doc/cpio.txt  doc/cpio.texi",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "make -C doc pdf &&",
+        "in_source_dir": true,
+        "as_root": false
+      },
+      {
+        "command": "make -C doc ps",
+        "in_source_dir": true,
+        "as_root": false
+      }
+    ]
+  }
+}
