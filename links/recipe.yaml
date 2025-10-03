@@ -1,0 +1,15 @@
+name: links
+version: 2.30
+description: Links is a text and graphics mode WWW browser. It includes support for rendering tables and frames, features background downloads, can display colors and has many other features. 
+
+source:
+  url: http://links.twibright.com/download/links-2.30.tar.bz2
+  format: tar.bz2
+
+dependencies:
+  build: [libevent]
+  runtime: []
+
+build: |
+  ./configure --prefix=/usr --mandir=/usr/share/man &&
+make
