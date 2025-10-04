@@ -1,0 +1,24 @@
+name: ntfs-3g
+version: 2022.10.3
+description: A new read-write driver for NTFS, called NTFS3, has been added into the
+  Linux kernel since the 5.15 release. The performance of NTFS3 is much better than
+  ntfs-3g
+source:
+  type: url
+  location: https://github.com/tuxera/ntfs-3g/archive/2022.10.3/ntfs-3g-2022.10.3.tar.gz
+  hash_type: md5
+  verification: 65814658dfd6ad06796795c4f3d1d6bc
+dependencies:
+  build: []
+  runtime: []
+build:
+  out_of_source: false
+  steps:
+  - ./autogen.sh
+  - ./configure --disable-static
+  - make -j4
+install:
+  steps:
+  - make install
+  - ln -svf ../bin/ntfs-3g /usr/sbin/mount.ntfs
+  - ln -svf ntfs-3g.8 /usr/share/man/man8/mount.ntfs.8
