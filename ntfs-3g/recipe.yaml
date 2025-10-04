@@ -16,7 +16,7 @@ build:
   steps:
   - ./autogen.sh
   - ./configure --disable-static
-  - make -j4
+  - make
 install:
   steps:
   - make install
